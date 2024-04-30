@@ -14,7 +14,7 @@
 	excludesfile = ~/.globalgitignore
 [user]
 	name = Merlin (they/them)
-	email = 421960+merlinpatt@users.noreply.github.com
+	email = 421960+merlinstardust@users.noreply.github.com
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
