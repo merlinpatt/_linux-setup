@@ -10,6 +10,10 @@ while [[ $# -gt 0 ]]; do
       name=$2
       shift; shift;
       ;;
+    -u|--url)
+      url=$2
+      shift; shift;
+      ;;
     *) # unknown
       POSITIONAL+=("$1")
       shift # past argument
@@ -17,6 +21,17 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
+echo "Args:"
+echo "  Name (-n|-o): $name"
+echo "  URL (-u): $url"
 echo "yt-dlp \"$url\" -o \"$name.%(ext)s\""
 
-yt-dlp "$url" -o "$name.%(ext)s"
+
+
+# if no name
+if [ -z "${name}" ];
+then
+    yt-dlp -f "[height<=720]" -vU -o "%(title)s.%(ext)s" "$url"
+else
+    yt-dlp "$url" -o "$name.%(ext)s"
+fi

@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+ZSH_DISABLE_COMPFIX="true"
+
 # not interactive so do nothing
 [[ $- != *i* ]] && return
 
@@ -42,7 +44,7 @@ done
 source ~/.nvm/nvm.sh
 
 ## COMPLETION
-autoload -Uz compinit && compinit
+#autoload -Uz compinit && compinit
 
 ## OPTIONS
 # cd without the command if directory name

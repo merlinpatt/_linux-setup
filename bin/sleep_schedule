@@ -1,0 +1,36 @@
+#!/bin/zsh
+
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+  key="$1"
+  case $key in
+    -x|--execute)
+      REAL_RUN=1
+      shift # past argument
+      ;;
+    -n|--name)
+      name=$2
+      shift; shift;
+      ;;
+    *) # unknown
+      POSITIONAL+=("$1")
+      shift # past argument
+      ;;
+  esac
+done
+
+nameOfFunction () {
+  local "${@}"
+  local nameOfArg=${nameOfArg}
+  # add code here
+}
+
+if [[ $REAL_RUN ]];
+then
+  nameOfFunction nameOfArg="argValue"
+fi
+
+#sudo pmset repeat wake  MTWRF 17:20:00
+
+sudo pmset repeat sleep MTWRF 17:20:00

@@ -23,13 +23,25 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
+echo "Use with this script on TVDB"
+echo "headings = document.querySelectorAll('.list-group-item-heading');"
+echo "console.log("
+echo "    Array.from(headings).map(h => {"
+echo "        const text = h.innerText.replace(' ', ' - ');"
+echo "        const season = text[2];"
+echo "        return `Season ${season}/${text}`;"
+echo "    })"
+echo "    .filter(text => !text.includes('SPECIAL'))"
+echo "    .join('\n')"
+echo ")"
+
 echo "REAL $REAL_RUN";
 
-echo "Old Names File [$oldNamesFile]";
-echo "New Names File [$newNamesFile]";
+echo "Old Names File -o [$oldNamesFile]";
+echo "New Names File -n [$newNamesFile]";
 
 exec 3<$oldNamesFile
-exec 4<$oldNamesFile
+exec 4<$newNamesFile
 
 while
   IFS= read -r oldFileName <&3
